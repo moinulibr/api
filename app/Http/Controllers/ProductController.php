@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         //return Product::all();
-        return  ProductCollection::collection(Product::all());
+        return  ProductCollection::collection(Product::paginate(10));
         #return new ProductCollection(Product::all()); #if we want to new collection, then return single tiem
         # return ProductResource::collection(Product::all()); #but not want this (All data, want custom data)
     }
