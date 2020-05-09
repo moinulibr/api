@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Product;
 use Illuminate\Http\Request;
 use App\Http\Resources\Product\ProductResource;
+use App\Http\Resources\Product\ProductCollection;
 
 class ProductController extends Controller
 {
@@ -15,7 +16,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::all();
+        //return Product::all();
+        return  ProductCollection::collection(Product::all());
+        #return new ProductCollection(Product::all()); #if we want to new collection, then return single tiem
+        # return ProductResource::collection(Product::all()); #but not want this (All data, want custom data)
     }
 
     /**
